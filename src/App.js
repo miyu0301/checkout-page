@@ -1,18 +1,13 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
 
-  // const originalBagPrice = 94.99;
-  // const originalShoesPrice = 124.99;
-  // const bagDiscount = 40;
-  // const shoesDiscount = 50;
-  // const shipping = 19;
-  const originalBagPrice = 10;
-  const originalShoesPrice = 1000;
-  const bagDiscount = 5;
-  const shoesDiscount = 500;
-  const shipping = 1;
+  const originalBagPrice = 94.99;
+  const originalShoesPrice = 124.99;
+  const bagDiscount = 40;
+  const shoesDiscount = 50;
+  const shipping = 19;
   const [ beforeBagPrice, setBeforeBagPrice ] = useState(originalBagPrice);
   const [ afterBagPrice, setAfterBagPrice ] = useState((originalBagPrice - bagDiscount));
   const [ bagCount, setBagCount ] = useState(1);
@@ -20,7 +15,18 @@ function App() {
   const [ afterShoesPrice, setAfterShoesPrice ] = useState(originalShoesPrice - shoesDiscount);
   const [ shoesCount, setShoesCount ] = useState(1);
   const [ total, setTotal ] = useState(originalBagPrice + originalShoesPrice + shipping);
+  const [ countries, setCountries] = useState([]);
 
+  const url = 'https://restcountries.com/v3.1/all?fields=name';
+  useEffect(() => {
+    fetch(url)
+    .then((res) => res.json())
+    .then((json) => {
+      setCountries(json)
+    })
+    .catch(() => alert("error"));
+   }, []);
+  
   const onClickAddBagCount = () =>{
     setBagTotal(bagCount + 1)
   };
@@ -70,20 +76,20 @@ function App() {
             <p>Contact information</p>
             <div class="form-group">
               <label for="e-mail">E-mail</label>
-              <input type="text" name="email" id="e-mail" required/>
+              <input type='email' name="email" id="e-mail" />
             </div>
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input type="text" name="phone" id="phone" />
+              <input type="tel" maxLength={10} name="phone" id="phone" />
             </div>
             <p>Shipping address</p>
             <div class="form-group">
               <label for="full-name">Full name</label>
-              <input type="text" name="fullName" id="full-name" />
+              <input type="text" maxLength={10} name="fullName" id="full-name" />
             </div>
             <div class="form-group">
               <label for="address">Address</label>
-              <input type="text" name="address" id="address" />
+              <input type="text" maxLength={100} name="address" id="address" />
             </div>
             <div class="form-group">
               <label for="city">City</label>
@@ -91,7 +97,11 @@ function App() {
             </div>
             <div class="form-group">
               <label for="country">Country</label>
-              <input type="text" name="country" id="country" />
+              <select name='country' id='country' placeholder='Your country'>
+                {countries.map((country, index) => {
+                    return <option key={index}>{country.name.common}</option>
+                })}
+            </select>
             </div>
             <div class="form-group">
               <label for="postal-code">Postal code</label>
