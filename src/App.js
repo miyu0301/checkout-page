@@ -1,5 +1,6 @@
-import './App.css';
+import './css/style.css';
 import { useState, useEffect } from 'react';
+
 
 function App() {
 
@@ -70,52 +71,63 @@ function App() {
   return (
     <div className="App">
       <body>
-        <main class="main">
+        <nav>
           <h1>Checkout</h1>
-          <form class="form-wrap">
-            <p>Contact information</p>
-            <div class="form-group">
-              <label for="e-mail">E-mail</label>
-              <input type='email' name="email" id="e-mail" />
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="tel" maxLength={10} name="phone" id="phone" />
-            </div>
-            <p>Shipping address</p>
-            <div class="form-group">
-              <label for="full-name">Full name</label>
-              <input type="text" maxLength={10} name="fullName" id="full-name" />
-            </div>
-            <div class="form-group">
-              <label for="address">Address</label>
-              <input type="text" maxLength={100} name="address" id="address" />
-            </div>
-            <div class="form-group">
-              <label for="city">City</label>
-              <input type="text" name="city" id="city" />
-            </div>
-            <div class="form-group">
-              <label for="country">Country</label>
-              <select name='country' id='country' placeholder='Your country'>
-                {countries.map((country, index) => {
-                    return <option key={index}>{country.name.common}</option>
-                })}
-            </select>
-            </div>
-            <div class="form-group">
-              <label for="postal-code">Postal code</label>
-              <input type="text" name="postalCode" id="postal-code" />
-            </div>
-            <div class="form-group">
-              <input type="checkbox" name="saveInfo" id="save-info" />
-              <label for="save-info">Save this information for next time</label>
-            </div>
-            <button type="submit" class="btn">Continue</button>
-          </form>
-          <section>
+        </nav>
+        <main class="main">
+          <section class='form-area'>
+            <form>
+              <div class='form-contact'>
+                <p>Contact information</p>
+                <div class="form-group">
+                  <label for="e-mail">E-mail</label>
+                  <input type='email' name="email" id="e-mail" placeholder='Enter your email...' />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="tel" maxLength={10} name="phone" id="phone" placeholder='Enter your phone...' />
+                </div>
+              </div>
+              <div class='form-address'>
+                <p>Shipping address</p>
+                <div class="form-group">
+                  <label for="full-name">Full name</label>
+                  <input type="text" maxLength={10} name="fullName" id="full-name" placeholder='Your full name...' />
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" maxLength={100} name="address" id="address" placeholder='Your address...' />
+                </div>
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input type="text" name="city" id="city" placeholder='Your city...' />
+                </div>
+                <div class='form-group'>
+                  <div class="form-wrap country">
+                    <label for="country" name='country' id='country'>Country</label><br/>
+                    <select name='country' id='country' placeholder='Your country...'>
+                      {countries.map((country, index) => {
+                          return <option key={index}>{"aaa"}</option>
+                          // return <option key={index}>{country.name.common}</option>
+                        })}
+                    </select>
+                  </div>
+                  <div class="form-wrap postal-code">
+                    <label for="postal-code" name='postalCode' id='postal-code'>Postal code</label><br/>
+                    <input type="text" name="postalCode" id="postal-code" placeholder='Your postal code...' />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="checkbox" name="saveInfo" id="save-info" />
+                  <label for="save-info" id='save-info'>Save this information for next time</label>
+                </div>
+              </div>
+              <button type="submit" class="btn">Continue</button>
+            </form>
+          </section>
+          <section class='shopping-bag'>
             <div class="item-group">
-              <img src="" alt="" />
+              <img src="./image/photo1.png" alt="bag" />
               <p class="item-name">Vintage Backbag</p>
               <p class="after-price">{`$${afterBagPrice.toFixed(2)}`}</p>
               <p class="before-price">{`$${beforeBagPrice.toFixed(2)}`}</p>
@@ -126,7 +138,7 @@ function App() {
               </div>
             </div>
             <div class="price-group">
-              <img src="" alt="" />
+              <img src="./image/photo1.png" alt="shoes" />
               <p class="item-name">Levi Shoes</p>
               <p class="after-price">{`$${afterShoesPrice.toFixed(2)}`}</p>
               <p class="before-price">{`$${beforeShoesPrice.toFixed(2)}`}</p>
