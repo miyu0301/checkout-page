@@ -1,4 +1,6 @@
 import './css/style.css';
+import bagImage from './image/photo1.png';
+import shoesImage from './image/photo2.png';
 import { useState, useEffect } from 'react';
 
 
@@ -127,37 +129,47 @@ function App() {
           </section>
           <section class='shopping-bag'>
             <div class="item-group">
-              <img src="./image/photo1.png" alt="bag" />
-              <p class="item-name">Vintage Backbag</p>
-              <p class="after-price">{`$${afterBagPrice.toFixed(2)}`}</p>
-              <p class="before-price">{`$${beforeBagPrice.toFixed(2)}`}</p>
-              <div class="quantity-group">
-                <button class="subtract" onClick={onClickSubstractBagCount}>-</button>
-                <p class="quantity">{bagCount}</p>
-                <button class="add" onClick={onClickAddBagCount}>+</button>
+              <img src={bagImage} alt="bag"></img>
+              <div class='item-info'>
+                <p class="item-name">Vintage Backbag</p>
+                <div class='price-group'>
+                  <p class="after-price">{`$${afterBagPrice.toFixed(2)}`}</p>
+                  <p class="before-price">{`$${beforeBagPrice.toFixed(2)}`}</p>
+                </div>
+                <div class="quantity-group">
+                  <button class="subtract" onClick={onClickSubstractBagCount}>-</button>
+                  <p class="quantity">{bagCount}</p>
+                  <button class="add" onClick={onClickAddBagCount}>+</button>
+                </div>
               </div>
             </div>
-            <div class="price-group">
-              <img src="./image/photo1.png" alt="shoes" />
-              <p class="item-name">Levi Shoes</p>
-              <p class="after-price">{`$${afterShoesPrice.toFixed(2)}`}</p>
-              <p class="before-price">{`$${beforeShoesPrice.toFixed(2)}`}</p>
-              <div class="quantity-group">
-                <button class="subtract" onClick={onClickSubstractShoesCount}>-</button>
-                <p class="quantity">{shoesCount}</p>
-                <button class="add" onClick={onClickAddShoesCount}>+</button>
+            <div class="item-group">
+              <img src={shoesImage} alt="shoes" />
+              <div class='item-info'>
+                <p class="item-name">Levi Shoes</p>
+                <div class='price-group'>
+                  <p class="after-price">{`$${afterShoesPrice.toFixed(2)}`}</p>
+                  <p class="before-price">{`$${beforeShoesPrice.toFixed(2)}`}</p>
+                </div>
+                <div class="quantity-group">
+                  <button class="subtract" onClick={onClickSubstractShoesCount}>-</button>
+                  <p class="quantity">{shoesCount}</p>
+                  <button class="add" onClick={onClickAddShoesCount}>+</button>
+                </div>
               </div>
             </div>
-            <hr />
-            <div class='price-group'>
-              <p class="shipping">Shipping</p>
-              <p class="price">{`$${shipping}`}</p>
+            <div class='check-wrap'>
+              <hr />
+              <div class='check-group'>
+                <p class="check-name">Shipping</p>
+                <p class="check-price">{`$${shipping}`}</p>
+              </div>
+              <hr />
+              <div class='check-group'>
+                <p class="check-name">Total</p>
+                <p class="check-price">{`$${total.toFixed(2)}`}</p>
+              </div>
             </div>
-            <div class='item-group'>
-              <p class="total">Total</p>
-              <p class="price">{`$${total.toFixed(2)}`}</p>
-            </div>
-            <hr />
           </section>
         </main>
         <footer>
