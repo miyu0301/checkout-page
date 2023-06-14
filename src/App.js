@@ -119,7 +119,7 @@ function App() {
                     <input type="text" name="postalCode" id="postal-code" placeholder='Your postal code...' />
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group save-info">
                   <input type="checkbox" name="saveInfo" id="save-info" />
                   <label for="save-info" id='save-info'>Save this information for next time</label>
                 </div>

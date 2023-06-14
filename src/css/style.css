@@ -1,40 +1,49 @@
- * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
- }
- body {
-    background-color: gold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
- }
- .main {
-    display: flex;
-    align-items: start;
- }
- form p {
+}
+  @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+    /* background-color: antiquewhite; */
+    font-family: 'Montserrat';
+    font-weight: normal;
+}
+nav {
+    /* background-color: aqua; */
+    margin: 30px 0;
+    padding: 0 40px;
+}
+main {
+    /* background-color: aquamarine; */
+}
+form {
+    padding: 0 40px;
+}
+form p {
     margin-bottom: 10px;
     font-size: 18px;
     font-weight: bold;
- }
- .form-contact {
+}
+.form-contact {
     margin-bottom: 40px;
  }
- .form-area {
-    background-color: aquamarine;
-    margin: 0 20px;
-    padding: 0 20px;
+
+.form-area {
+    /* background-color: yellow; */
     width: 500px;
-    height: auto;
- }
- .form-group {
+}
+.form-group {
     margin: 10px 0;
- }
- .form-group label:not(#country, #postal-code, #save-info),
- .form-group input:not(#country, #postal-code, #save-info) {
+}
+
+.form-group label:not(#country, #postal-code, #save-info),
+.form-group input:not(#country, #postal-code, #save-info) {
     display: block;
     width: 100%;
- }
- .form-wrap {
+}
+.form-wrap {
     display: inline-block;
     width: 50%;
  }
@@ -55,28 +64,45 @@
  }
  .form-group input, 
  .form-group select {
-    padding: 10px;
+    padding: 13px;
     border-radius: 10px;
+    border-width: 1px;
+    border-color: #828282;
  }
- button {
+#save-info {
+    padding: 0 5px;
+ }
+form button {
     float: right;
-    padding: 10px 20px;
+    padding: 13px 20px;
     border-radius: 10px;
+    background-color: #F2994A;
+    color: white;
+    border: none;
+    width: 10em;
+    cursor: pointer;
  }
- .shopping-bag {
-    background-color: grey;
-    padding: 30px;
+
+.shopping-bag {
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    width: 400px;
     height: auto;
- }
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-bottom: 40px;
+}
 .item-group {
     display: flex;
-    padding: 15px 0;
     column-gap: 20px;
+    padding: 15px 0;
 }
 .item-group img {
     width: 150px;
     border-radius: 10%;
 }
+
 .price-group {
     display: flex;
     column-gap: 10px;
@@ -85,6 +111,9 @@
 }
 .item-info {
     width: 100%;
+}
+.item-info p {
+    font-weight: bold;
 }
 .after-price {
     font-size: 18px;
@@ -96,28 +125,80 @@
 .item-info .item-name {
     font-size: 18px;
 }
+
 .quantity-group {
     display: flex;
-    column-gap: 10px;
-    padding: 20px 0;
+    column-gap: 20px;
+    padding: 10px 0;
     align-items: center;
     border: 1px solid black;
+    border-radius: 10px;
     justify-content: center;
+    width: 150px;
+}
+.quantity-group button {
+    background-color: #E0E0E0;
+    border: none;
+    float: right;
+    padding: 0 7px;
+    border-radius: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #828282;
+}
+.quantity-group p {
+    margin: 0 5px;
 }
 .check-wrap {
-    margin-top: 20px;
+    margin-top: 40px;
 }
+
 .check-group {
-    font-size: 18px;
-    font-weight: bold;
     display: flex;
     justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
     margin: 10px 0;
 }
- footer {
-    margin: 20px 0;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    color: grey;
- }
+footer {
+    font-size: 15px;
+    color: #828282;
+    margin: 5px;
+    margin-top: 50px;
+}
+/* smartphone or tablet */
+@media only screen and (max-width: 768px){
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    nav {
+        align-self: flex-start;
+    }
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .shopping-bag {
+        order: -1;
+    }
+}
+
+/* normal */
+@media only screen and (min-width: 769px){
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    nav {
+        align-self: flex-start;
+    }
+    main {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
