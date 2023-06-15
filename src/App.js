@@ -19,13 +19,17 @@ function App() {
   const [ shoesCount, setShoesCount ] = useState(1);
   const [ total, setTotal ] = useState(originalBagPrice + originalShoesPrice + shipping);
   const [ countries, setCountries] = useState([]);
-
-  const url = 'https://restcountries.com/v3.1/all?fields=name';
+  const countryListUrl = 'https://countriesnow.space/api/v0.1/countries';
+  
   useEffect(() => {
-    fetch(url)
+    fetch(countryListUrl)
     .then((res) => res.json())
     .then((json) => {
-      setCountries(json)
+        let countryList = [];
+        json.data.map((data) => {
+          countryList.push(data.country);
+        });
+        setCountries(countryList)
     })
     .catch(() => alert("error"));
    }, []);
@@ -83,40 +87,61 @@ function App() {
                 <p>Contact information</p>
                 <div class="form-group">
                   <label for="e-mail">E-mail</label>
-                  <input type='email' name="email" id="e-mail" placeholder='Enter your email...' />
+                  <div class='input-content'>
+                    <span class="material-symbols-outlined">mail</span>
+                    <input type='email' name="email" id="e-mail" placeholder='Enter your email...' />
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="phone">Phone</label>
-                  <input type="tel" maxLength={10} name="phone" id="phone" placeholder='Enter your phone...' />
+                  <div class='input-content'>
+                    <span class="material-symbols-outlined">call</span>
+                    <input type="tel" maxLength={10} name="phone" id="phone" placeholder='Enter your phone...' />
+                  </div>
                 </div>
               </div>
               <div class='form-address'>
                 <p>Shipping address</p>
                 <div class="form-group">
                   <label for="full-name">Full name</label>
-                  <input type="text" maxLength={10} name="fullName" id="full-name" placeholder='Your full name...' />
+                  <div class='input-content'>
+                   <span class="material-symbols-outlined">account_circle</span>
+                    <input type="text" maxLength={10} name="fullName" id="full-name" placeholder='Your full name...' />
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="address">Address</label>
-                  <input type="text" maxLength={100} name="address" id="address" placeholder='Your address...' />
+                  <div class='input-content'>
+                   <span class="material-symbols-outlined">home</span>
+                    <input type="text" maxLength={100} name="address" id="address" placeholder='Your address...' />
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="city">City</label>
-                  <input type="text" name="city" id="city" placeholder='Your city...' />
+                  <div class='input-content'>
+                   <span class="material-symbols-outlined">location_city</span>
+                    <input type="text" name="city" id="city" placeholder='Your city...' />
+                  </div>
                 </div>
                 <div class='form-group'>
                   <div class="form-wrap country">
                     <label for="country" name='country' id='country'>Country</label><br/>
-                    <select name='country' id='country' placeholder='Your country...'>
-                      {countries.map((country, index) => {
-                          return <option key={index}>{"aaa"}</option>
-                          // return <option key={index}>{country.name.common}</option>
+                    <div class='input-content'>
+                     <span class="material-symbols-outlined">public</span>
+                      <select required name='country' id='country' placeholder='Your country...'>
+                        <option value="" hidden selected>Your country...</option>
+                        {countries.map((country, index) => {
+                          return <option value={index}>{country}</option>
                         })}
-                    </select>
+                     </select>
+                    </div>
                   </div>
                   <div class="form-wrap postal-code">
                     <label for="postal-code" name='postalCode' id='postal-code'>Postal code</label><br/>
-                    <input type="text" name="postalCode" id="postal-code" placeholder='Your postal code...' />
+                    <div class='input-content'>
+                      <span class="material-symbols-outlined">markunread_mailbox</span>
+                     <input type="text" name="postalCode" id="postal-code" placeholder='Your postal code...' />
+                    </div>
                   </div>
                 </div>
                 <div class="form-group save-info">
