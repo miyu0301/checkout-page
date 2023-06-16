@@ -1,3 +1,4 @@
+import { validate } from 'json-schema';
 import './css/style.css';
 import bagImage from './image/photo1.png';
 import shoesImage from './image/photo2.png';
@@ -54,6 +55,13 @@ function App() {
     }
   };
 
+  const onClickContinue = () =>{
+    const isValid = validate();
+    if(isValid){
+      alert('Perfect!!');
+    }
+  }
+
   const setBagTotal = (count) => {
     let subtotal = originalBagPrice*count;
     let discounted = (originalBagPrice - bagDiscount)*count;
@@ -82,21 +90,21 @@ function App() {
         </nav>
         <main class="main">
           <section class='form-area'>
-            <form>
+            <form onSubmit={onClickContinue}>
               <div class='form-contact'>
                 <p>Contact information</p>
                 <div class="form-group">
                   <label for="e-mail">E-mail</label>
                   <div class='input-content'>
                     <span class="material-symbols-outlined">mail</span>
-                    <input type='email' name="email" id="e-mail" placeholder='Enter your email...' />
+                    <input required type='email' name="email" id="e-mail" placeholder='Enter your email...' />
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="phone">Phone</label>
                   <div class='input-content'>
                     <span class="material-symbols-outlined">call</span>
-                    <input type="tel" maxLength={10} name="phone" id="phone" placeholder='Enter your phone...' />
+                    <input required type="tel" maxLength={10} name="phone" id="phone" placeholder='Enter your phone...' />
                   </div>
                 </div>
               </div>
@@ -106,21 +114,21 @@ function App() {
                   <label for="full-name">Full name</label>
                   <div class='input-content'>
                    <span class="material-symbols-outlined">account_circle</span>
-                    <input type="text" maxLength={10} name="fullName" id="full-name" placeholder='Your full name...' />
+                    <input required type="text" maxLength={10} name="fullName" id="full-name" placeholder='Your full name...' />
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="address">Address</label>
                   <div class='input-content'>
                    <span class="material-symbols-outlined">home</span>
-                    <input type="text" maxLength={100} name="address" id="address" placeholder='Your address...' />
+                    <input required type="text" maxLength={100} name="address" id="address" placeholder='Your address...' />
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="city">City</label>
                   <div class='input-content'>
                    <span class="material-symbols-outlined">location_city</span>
-                    <input type="text" name="city" id="city" placeholder='Your city...' />
+                    <input required type="text" name="city" id="city" placeholder='Your city...' />
                   </div>
                 </div>
                 <div class='form-group'>
@@ -140,7 +148,7 @@ function App() {
                     <label for="postal-code" name='postalCode' id='postal-code'>Postal code</label><br/>
                     <div class='input-content'>
                       <span class="material-symbols-outlined">markunread_mailbox</span>
-                     <input type="text" name="postalCode" id="postal-code" placeholder='Your postal code...' />
+                     <input required type="text" name="postalCode" id="postal-code" placeholder='Your postal code...' />
                     </div>
                   </div>
                 </div>
